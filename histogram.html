@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histogram Generator</title>
+    <link rel="stylesheet" href="histogram.css">
+    <script src="calculate.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Histogram Generator</h1>
+    </header>
+    <form id="file">
+        <label for="fileInput"></label>
+        <input type="file" id="fileInput" name="fileInput">
+    </form>
+
+    <main class="hidden">
+
+        <section id="bounds">
+            <h2>Lower bounds</h2>
+
+            <form>
+                <label for="Max">Max</label>
+                <label for="APlus">A+</label>
+                <label for="A">A</label>
+                <label for="AMinus">A-</label>
+                <label for="BPlus">B+</label>
+                <label for="B">B</label>
+                <label for="BMinus">B-</label>
+                <label for="CPlus">C+</label>
+                <label for="C">C</label>
+                <label for="CMinus">C-</label>
+                <label for="D">D</label>
+                <label for="F">F</label>
+            </form>
+
+            <form>
+                <input type="number" id="Max" value="100">
+                <input type="number" id="APlus" value="95">
+                <input type="number" id="A" value="90">
+                <input type="number" id="AMinus" value="85">
+                <input type="number" id="BPlus" value="80">
+                <input type="number" id="B" value="75">
+                <input type="number" id="BMinus" value="70">    
+                <input type="number" id="CPlus" value="65">
+                <input type="number" id="C" value="60">
+                <input type="number" id="CMinus" value="55">
+                <input type="number" id="D" value="50">
+                <input type="number" id="F" value="0">
+            </form>
+        </section>
+
+        <section class="graph">
+            <h2>Histogram</h2>
+            
+            <label>Max</label>
+            <output id="Max"> </output>
+            
+            <label>A+</label>
+            <output id="APlus"></output>
+            
+            <label>A</label>
+            <output id="A"></output>
+            
+            <label>A-</label>
+            <output id="AMinus"></output>
+            
+            <label>B+</label>
+            <output id="BPlus"></output>
+            
+            <label>B</label>
+            <output id="B"></output>
+            
+            <label>B-</label>
+            <output id="BMinus"></output>
+            
+            <label>C+</label>
+            <output id="CPlus"></output>
+            
+            <label>C</label>
+            <output id="C"></output>
+            
+            <label>C-</label>
+            <output id="CMinus"></output>
+            
+            <label>D</label>
+            <output id="D"></output>
+            
+            <label>F</label>
+            <output id="F"></output>
+        </section>
+
+        <section class="stats">
+            <h2>Stats</h2>
+
+            <label for="highest">Highest</label>
+            <output id="highest"></output>
+            
+            <label for="lowest">Lowest</label>
+            <output id="lowest"></output>
+            
+            <label for="mean">Mean</label>
+            <output id="mean"></output>
+            
+            <label for="median">Median</label>
+            <output id="median"></output>
+
+        </section>
+    </main>
+</body>
+
+</html>
