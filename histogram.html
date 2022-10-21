@@ -19,62 +19,90 @@
     </form>
 
     <main class="hidden">
+        
+        <div>
+            <section id="bounds">
+                <h2>Lower bounds</h2>
 
-        <section id="bounds">
-            <h2>Lower bounds</h2>
+                <form class="labels">
+                    <label for="Max">
+                        Max
+                        <input type="number" id="Max" value="100">
+                    </label>
+                    <label for="APlus">
+                        A+
+                        <input type="number" id="APlus" value="95">
+                    </label>
+                    <label for="A">
+                        A
+                        <input type="number" id="A" value="90">
+                    </label>
+                    <label for="AMinus">
+                        A-
+                        <input type="number" id="AMinus" value="85">
+                    </label>
+                    <label for="BPlus">
+                        B+
+                        <input type="number" id="BPlus" value="80">
+                    </label>
+                    <label for="B">
+                        B
+                        <input type="number" id="B" value="75">
+                    </label>
+                    <label for="BMinus">
+                        B-
+                        <input type="number" id="BMinus" value="70">
+                    </label>
+                    <label for="CPlus">
+                        C+
+                        <input type="number" id="CPlus" value="65">
+                    </label>
+                    <label for="C">
+                        C
+                        <input type="number" id="C" value="60">
+                    </label>
+                    <label for="CMinus">
+                        C-
+                        <input type="number" id="CMinus" value="55">
+                    </label>
+                    <label for="D">
+                        D
+                        <input type="number" id="D" value="50">
+                    </label>
+                    <label for="F">
+                        F
+                        <input type="number" id="F" value="0">
+                    </label>
 
-            <form class="labels">
-                <label for="Max">
-                    Max
-                    <input type="number" id="Max" value="100">
-                </label>
-                <label for="APlus">
-                    A+
-                    <input type="number" id="APlus" value="95">
-                </label>
-                <label for="A">
-                    A
-                    <input type="number" id="A" value="90">
-                </label>
-                <label for="AMinus">
-                    A-
-                    <input type="number" id="AMinus" value="85">
-                </label>
-                <label for="BPlus">
-                    B+
-                    <input type="number" id="BPlus" value="80">
-                </label>
-                <label for="B">
-                    B
-                    <input type="number" id="B" value="75">
-                </label>
-                <label for="BMinus">
-                    B-
-                    <input type="number" id="BMinus" value="70">
-                </label>
-                <label for="CPlus">
-                    C+
-                    <input type="number" id="CPlus" value="65">
-                </label>
-                <label for="C">
-                    C
-                    <input type="number" id="C" value="60">
-                </label>
-                <label for="CMinus">
-                    C-
-                    <input type="number" id="CMinus" value="55">
-                </label>
-                <label for="D">
-                    D
-                    <input type="number" id="D" value="50">
-                </label>
-                <label for="F">
-                    F
-                    <input type="number" id="F" value="0">
-                </label>
+                </form>
+            </section>
 
-            </form>
-        </section>
+            <section id="stats">
+                <h2>Stats</h2>
+
+                <form class="labels">
+                    <label for="highest">
+                        Highest 
+                        <output id="highest"></output>
+                    </label>
+
+                    <label for="lowest">
+                        Lowest 
+                        <output id="lowest"></output>
+                    </label>
+
+                    <label for="mean">
+                        Mean 
+                        <output id="mean"></output>
+                    </label>
+
+                    <label for="median">
+                        Median 
+                        <output id="median"></output>
+                    </label>
+                </form>
+            </section>
+        </div>
 
         <section id="graph">
             <h2>Histogram</h2>
@@ -82,51 +110,57 @@
             <svg> 
                 <!-- A+ to F -->
                 <rect ></rect>
+                <text class="letter">A+</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">A</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">A-</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">B+</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">B</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">B-</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">C+</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">C</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">C-</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">D</text>
+                <text></text>
+                
                 <rect ></rect>
+                <text class="letter">F</text>
+                <text></text>
+                
 
                 <!-- x & y axis -->
                 <line></line>
                 <line></line>
-
             </svg>
-
         </section>
 
-        <section id="stats">
-            <h2>Stats</h2>
 
-            <form class="labels">
-                <label for="highest">
-                    Highest 
-                    <output id="highest"></output>
-                </label>
-
-                <label for="lowest">
-                    Lowest 
-                    <output id="lowest"></output>
-                </label>
-
-                <label for="mean">
-                    Mean 
-                    <output id="mean"></output>
-                </label>
-
-                <label for="median">
-                    Median 
-                    <output id="median"></output>
-                </label>
-            </form>
-
-        </section>
     </main>
 </body>
 

@@ -5,19 +5,21 @@ function handleFileSelect(event){
 }
 
 function handleFileLoad(event){
-    let csv = event.target.result.replaceAll(" ", "").replaceAll("\r","").split("\n");
+    csv = event.target.result.replaceAll(" ", "").replaceAll("\r","").split("\n");
     if (csv.length < 2) {return; }
 
     document.querySelector("form").classList.add("hidden");
     document.querySelector("main").classList.remove("hidden");
     
-    let svg = document.querySelector("svg");
-    let vals = svg.getBoundingClientRect();
+    svg = document.querySelector("svg");
+    vals = svg.getBoundingClientRect();
 
     svg.setAttribute("viewBox", `0 0 ${vals.width} ${vals.height}`);
 
-    console.log(vals);
+    draw()
+}
 
+function draw() {
     let origin = makeAxis(vals);
     let pairs = calculate(csv); console.log(pairs);
     makeBars(vals, origin, pairs); 
@@ -25,6 +27,8 @@ function handleFileLoad(event){
 
 function makeBars(svg, origin, pairs) {
     let rect = document.querySelectorAll("svg>rect");
+    let txt1 = document.querySelectorAll("svg>text+text");
+    let txt2 = document.querySelectorAll("svg>text.letter");
     let inputs = document.querySelectorAll("#bounds>form input");
     let xSize = svg.width - origin.x;
     let ySize = origin.y;
@@ -34,7 +38,7 @@ function makeBars(svg, origin, pairs) {
         let min = Number(inputs[i+1].value);
         let max = Number(inputs[i].value);
         let unit = xSize/100;
-        let num = grades[i]/10;
+        let num = grades[i]/5;
 
         console.log(min, max, unit);
 
@@ -42,8 +46,14 @@ function makeBars(svg, origin, pairs) {
         rect[i].setAttribute("y", ySize - ySize*num);
         rect[i].setAttribute("width", (max-min)*unit);
         rect[i].setAttribute("height", ySize*num);
-    }
 
+        txt1[i].setAttribute("x", origin.x + (min+max)*unit/2)
+        txt1[i].setAttribute("y", ySize*(0.99-num))
+        txt1[i].innerHTML = grades[i];
+        
+        txt2[i].setAttribute("x", origin.x + (min+max)*unit/2)
+        txt2[i].setAttribute("y", ySize*(0.99))
+    }
 }
 
 function calcGrades(pairs, inputs) {
@@ -62,7 +72,7 @@ function makeAxis(svg) {
     let lines = document.querySelectorAll("svg>line");
     let xAxis = lines[0];
     let yAxis = lines[1];
-    const percent = 0.1;
+    const percent = 0;
     let margin = svg.height * percent;
 
     xAxis.setAttribute("x1", margin);
@@ -70,10 +80,10 @@ function makeAxis(svg) {
     xAxis.setAttribute("y1", svg.height - margin);
     xAxis.setAttribute("y2", svg.height - margin);
 
-    yAxis.setAttribute("x1", margin);
-    yAxis.setAttribute("x2", margin);
-    yAxis.setAttribute("y1", 0);
-    yAxis.setAttribute("y2", svg.height - margin);
+    // yAxis.setAttribute("x1", margin);
+    // yAxis.setAttribute("x2", margin);
+    // yAxis.setAttribute("y1", 0);
+    // yAxis.setAttribute("y2", svg.height - margin);
 
     return {x: margin, y: svg.height - margin};
 }
@@ -130,6 +140,10 @@ function highest(csv) {
 
 function init(){
     document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+    let inputs = document.querySelectorAll("#bounds>form input");
+    for (i of inputs) {
+        i.addEventListener('change', draw, false);
+    }
 }
 
 
