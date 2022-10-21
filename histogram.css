@@ -92,8 +92,12 @@ text {
     text-anchor: middle;
     dominant-baseline: text-top;
     visibility: hidden;
+    pointer-events: none;
 }
 
+text.letter {
+    fill: rgb(56, 57, 63);
+}
 
 line {
     stroke:white;
@@ -101,17 +105,21 @@ line {
 }
 
 rect {
-    fill: rgb(56, 57, 63);
+    fill: transparent;
     stroke: white;
+    transition: 0.5s;
 }
 
 rect:hover{
     stroke-width: 3px;
+    fill: white;
+    z-index: 100;
 }
 
 rect:hover+text+text, rect:hover+text{
     visibility: visible;
 }
+
 
 svg {
     width: 100%;

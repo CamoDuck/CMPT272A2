@@ -21,7 +21,7 @@ function handleFileLoad(event){
 
 function draw() {
     let origin = makeAxis(vals);
-    let pairs = calculate(csv); console.log(pairs);
+    let pairs = calculate(csv); 
     makeBars(vals, origin, pairs); 
 }
 
@@ -39,8 +39,6 @@ function makeBars(svg, origin, pairs) {
         let max = Number(inputs[i].value);
         let unit = xSize/100;
         let num = grades[i]/5;
-
-        console.log(min, max, unit);
 
         rect[i].setAttribute("x", origin.x + min*unit);
         rect[i].setAttribute("y", ySize - ySize*num);
@@ -79,11 +77,6 @@ function makeAxis(svg) {
     xAxis.setAttribute("x2", svg.width);
     xAxis.setAttribute("y1", svg.height - margin);
     xAxis.setAttribute("y2", svg.height - margin);
-
-    // yAxis.setAttribute("x1", margin);
-    // yAxis.setAttribute("x2", margin);
-    // yAxis.setAttribute("y1", 0);
-    // yAxis.setAttribute("y2", svg.height - margin);
 
     return {x: margin, y: svg.height - margin};
 }
@@ -137,6 +130,8 @@ function lowest(csv) {
 function highest(csv) {
     return csv[0];
 }
+
+
 
 function init(){
     document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
