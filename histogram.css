@@ -37,8 +37,9 @@ main {
 
 svg {
     width: 100%;
-    height: 100%;
+    height: 130%;
     background-color: wheat;
+    
 }
 
 
@@ -54,6 +55,7 @@ h2 {
 section#graph {
     flex: 1 1 60%;
     max-width: 60%;
+    
 }
 
 section#bounds, section#stats {
@@ -83,4 +85,15 @@ form#file>input {
 }
 
 
+line {
+    stroke:black;
+}
 
+rect {
+    fill: rgb(55, 43, 226);
+    stroke: aqua;
+}
+
+rect:hover {
+    stroke-width: 3px;
+}
