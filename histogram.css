@@ -36,12 +36,16 @@ form#file {
     background-color: aliceblue;
 
 
-    width: 70%;
+    width: 50%;
 }
 
 form#file>input {
     color: black;
 }
+
+
+
+/* main stuff below  */
 
 label {
     display: flex;
@@ -51,15 +55,6 @@ label {
 h2 {
     margin: 0;
 }
-
-#bounds>h2, #stats>h2 {
-    flex: 0 1 100%;
-}
-
-div {
-    min-width: 15%;
-    max-width: 15%;
-} 
 
 #graph>h2 {
     text-align: center;
@@ -71,6 +66,14 @@ section input {
     background-color: transparent;
     border: white  1px solid;
     border-radius: 0.3em;
+}
+
+section form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    flex: 1 0 auto;
 }
 
 
@@ -103,6 +106,9 @@ section#bounds {
     grid-column-end: line20;
     grid-row-start: line5;
     grid-row-end: line70;
+
+    display: flex;
+    flex-direction: column;
 }
 
 section#stats { 
@@ -110,6 +116,10 @@ section#stats {
     grid-column-end: line20;
     grid-row-start: line75;
     grid-row-end: line95;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 
@@ -138,15 +148,14 @@ line {
 }
 
 rect {
+    /* box-sizing: border-box; */
     fill: transparent;
     stroke: white;
     transition: 0.5s;
 }
 
 rect:hover{
-    stroke-width: 3px;
     fill: white;
-    z-index: 100;
 }
 
 rect:hover+text+text, rect:hover+text{

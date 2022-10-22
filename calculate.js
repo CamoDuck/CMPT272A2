@@ -18,9 +18,9 @@ function handleFileLoad(event){
     draw()
 }
 
-function draw() {
+function draw(range = [0, 100]) {
     let origin = makeAxis(vals);
-    let pairs = calculate(csv); 
+    let pairs = calculate(csv, range); 
     makeBars(vals, origin, pairs); 
 }
 
@@ -33,7 +33,7 @@ function makeBars(svg, origin, pairs) {
         let min = Number(inputs[i+1].value);
         let max = Number(inputs[i].value);
         let unit = xSize/100;
-        let num = grades[i]/5;
+        let num = grades[i]/(Math.max(...grades)*1.10);
 
         rects[i].setAttribute("x", origin.x + min*unit);
         rects[i].setAttribute("y", ySize - ySize*num);
@@ -75,14 +75,16 @@ function makeAxis(svg) {
     return {x: margin, y: svg.height - margin};
 }
 
-function calculate(csv) {
+function calculate(csv, range) {
     let pairs = [];
 
     for (let i = 1; i < csv.length; i++) {
         let pair = csv[i].split(",");
         pairs[i-1] = [pair[0], Number(pair[1])]; 
     }
+    
     pairs.sort(compare);
+    pairs = pairs.filter((a) => {return (a[1] >= range[0] && a[1] <= range[1]);})
 
     let avg = mean(pairs);
     let med = median(pairs);
@@ -127,20 +129,35 @@ function highest(csv) {
 
 function checkInput(event) {
     let valid = true;
-    for (let i=0; i< inputs.length-1; i++) {
-        if (Number(inputs[i].value) <= Number(inputs[i+1].value)) {
-            inputs[i].classList.add("error");
-            inputs[(i+1)].classList.add("error");
+
+    for (let i of inputs) {
+        i.classList.remove("error");
+        let val = Number(i.value);
+        if (val < 0 || val > 100) {
+            i.classList.add("error");
             valid = false;
-            console.log(inputs[i], inputs[(i+1)])
         }
-        else {
-            inputs[i].classList.remove("error");
-            inputs[i+1].classList.remove("error");
+    }
+
+    for (let i=0; i< inputs.length-1; i++) {
+        let curr = Number(inputs[i].value);
+        let next = Number(inputs[i+1].value);
+        if (curr <= next) {
+            inputs[i].classList.add("error");
+            inputs[i+1].classList.add("error");
+            valid = false;
         }
     }
     if (valid) {
-        draw()
+        for (let r of rects) {
+            r.classList.remove("hidden");
+        }
+        draw([Number(inputs[inputs.length-1].value), Number(inputs[0].value)])
+    }
+    else {
+        for (let r of rects) {
+            r.classList.add("hidden");
+        }
     }
 }   
 
@@ -158,5 +175,4 @@ function init(){
 }
 
 
-console.log("start");
 init();
