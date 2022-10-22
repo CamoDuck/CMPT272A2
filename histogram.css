@@ -3,12 +3,18 @@
 }
 
 body {
-
     margin: 0;
 
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
     background-color: rgb(56, 57, 63);    
+
+    min-height: 100vh;
+    max-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 header {
@@ -42,15 +48,9 @@ label {
     justify-content: space-between;
 }
 
-
-main {
-    padding: 2em;
-    gap: 1em;
-
-    display: flex;
-    justify-content: space-between;
+h2 {
+    margin: 0;
 }
-
 
 #bounds>h2, #stats>h2 {
     flex: 0 1 100%;
@@ -65,16 +65,6 @@ div {
     text-align: center;
 }
 
-section#graph {
-    min-width: 75%;
-    min-height: 100%;
-    max-height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 section input {
     width: 3em;
     color: white;
@@ -84,6 +74,49 @@ section input {
 }
 
 
+
+
+/* PAGE GRID BELOW  */
+
+main {
+    /* padding: 2em; */
+    flex: 1 0 auto;
+
+    display: grid;
+    grid-template-columns: [line0] 5% [line5] 15% [line20] 5% [line25] auto [line95] 5% [line100];
+    grid-template-rows: [line0] 5% [line5] 65% [line70] 5% [line75] auto [line95] 5% [line100];
+}
+
+section#graph {
+    grid-column-start: line25;
+    grid-column-end: line95;
+    grid-row-start: line5;
+    grid-row-end: line95;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+section#bounds { 
+    grid-column-start: line5;
+    grid-column-end: line20;
+    grid-row-start: line5;
+    grid-row-end: line70;
+}
+
+section#stats { 
+    grid-column-start: line5;
+    grid-column-end: line20;
+    grid-row-start: line75;
+    grid-row-end: line95;
+}
+
+
+
+
+
+/* SVG STUFF BELOW */
 
 text {
     fill: white;
@@ -120,8 +153,12 @@ rect:hover+text+text, rect:hover+text{
     visibility: visible;
 }
 
-
 svg {
     width: 100%;
     height: 80%;
 }
+
+.error {
+    color: red;
+}
+
